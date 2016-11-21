@@ -1,0 +1,39 @@
+Rishikesh S
+
+Steps to Recompile Linux Kernel without making changes:
+
+1. Get the Linux kernel source corresponding to the installed version
+
+		apt-get source linux-image-$(uname -r)
+
+2. Extract the tar.gz file downloaded
+ 
+ 		tar -xvzf linux_4.4.0.orig.tar.gz
+
+3. Change your current directory to the extracted directory
+
+		cd linux-4.4.0
+
+4. If no changes are to be made to the kernel, do
+
+   	    make oldconfig
+
+5. To compile the main Kernel. Use -j in a multicore system
+   to run the jobs in parallel
+ 
+ 	    make -j
+
+6. To compile the kernel modules:
+
+    	make modules -j
+
+7. To install the kernel modules:
+
+   		make modules_install -j
+
+
+8. To install the New Kernel
+
+		make install -j
+
+

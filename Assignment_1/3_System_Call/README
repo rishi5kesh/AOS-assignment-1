@@ -1,0 +1,97 @@
+Rishikesh S
+
+LIST OF FILES:
+
+main.c
+	Gets the number to be factorised from the user and passes the number and an array 
+	in which the factors are to be stored to the predefined system call.
+	Then prints the returned array as formatted output.
+
+factorList.c
+	Gets as parameter a number and an empty array to store factors.
+	Calculates the list of factors and stores them in the passed array.
+
+makefile
+	Used to compile or remove the factorlist object file.
+
+HOW TO COMPILE:
+	$ make factorlist
+
+HOW TO EXECUTE:
+    $ ./factorlist
+
+ADDING SYSTEM CALL TO LINUX KERNEL:
+	1. Get the Linux kernel source corresponding to the installed version
+
+			apt-get source linux-image-$(uname -r)
+
+	2. Extract the tar.gz file downloaded
+ 
+ 			tar -xvzf linux_4.4.0.orig.tar.gz
+
+	3. Change your current directory to the extracted directory
+
+			cd linux-4.4.0
+
+	4. Create a directory factorList in the kernel source directory:-
+
+	   	    mkdir factorList
+
+    5. Change into this directory
+
+      	    cd factorList
+
+    6. Create a “Makefile” in the factorList folder and add the given line  to it.
+
+			gedit Makefile
+
+	7. add the following line to it
+
+			obj-y := factorList.o
+
+	8. change back into the linux-4.4.0 folder and open Makefile
+
+			gedit Makefile
+
+	9. Find the line which says :-   “core-y += kernel/ mm/ fs/ ipc/ security/ crypto/ block/ ”
+	   change this to   “core-y += kernel/ mm/ fs/ ipc/ security/ crypto/ block/ factorList/”
+
+	10. Go to  arch/x86/entry/syscalls
+
+			gedit syscall_64.tbl
+
+	11. Add the following line in the end 
+
+			326    common    factorList    sys_factorList
+
+	12. Go to include/linux and open syscalls.h
+
+			gedit syscalls.h
+
+	13. Add this line to the end of the file just before the #endif.
+
+			asmlinkage long sys_factorList(int number, int *factorArray);
+
+	14. If no changes are to be made to the kernel, do
+
+   	    	make oldconfig
+
+	15. To compile the main Kernel. Use -j in a multicore system
+   	    to run the jobs in parallel
+ 
+ 	    	make -j
+
+	16. To compile the kernel modules:
+
+    		make modules -j
+
+	17. To install the kernel modules:
+
+   			make modules_install -j
+
+	18. To install the New Kernel
+
+			make install -j
+
+	
+	

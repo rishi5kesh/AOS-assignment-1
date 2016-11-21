@@ -1,0 +1,1 @@
+char* readInput(int,int,char*);

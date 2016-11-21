@@ -1,0 +1,52 @@
+Rishikesh S
+
+LIST OF FILES:
+
+main.c
+   Passes the Number of strings to the readInput() function 
+   and gets the resultant reverse concatenated character array.
+
+readInput.c
+	Gets as parameter the Number of strings.
+	Gets the given number of strings using read() system call.
+	Returns a reverse concatenated char array.
+
+readInput.h
+	Contains declaration of function readInput()
+
+Makefile
+    Contains make and clean commands to create or delete the readInput object file.
+
+HOW TO COMPILE:
+	$ make readInput
+
+HOW TO EXECUTE:
+    $ ./readInput
+
+PROGRAM STRUCTURE:
+	1. Execute the main function
+
+	2. Read the number of lines from user
+
+	3.Read the maximum string size from from user
+
+	4. Allocate a 1D array called result dynamically.
+
+	3. Pass number of lines Number_of_strings, size and the allocated char array as parameter to readInput function and get the result.
+
+	4. In the readInput function, Initialize arrays buffer,final and result with '\0'
+
+	5. Read each Line into the 2D array called final and remove '/n' 
+       read along with the string and replacing with space
+
+    6. Do a pass on each string and Get the index at which each string ends
+       and use that index to reverse it. 
+
+    7. Copy the result array to a dynamic array to return it to the calling function
+
+    8. In the main function, get the returned array and print it.
+
+    9. Free the dynamic array.
+
+
+	
